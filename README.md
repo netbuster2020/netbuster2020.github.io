@@ -1,2 +1,3 @@
-# Aquí podemos dejar una nota
-Pagina de peliculas y series para aprender a programar
+# Los archivos de JAva estan en la carpeta SRC
+# Los archivos de JSP en WEBCONTENT
+# Para usar el archivo .class, estan en la carpeta BUILD
