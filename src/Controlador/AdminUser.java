@@ -20,7 +20,7 @@ public class AdminUser extends HttpServlet{
     
     String edit="vistas/dashboard/users/posts/edit.jsp";
 
-    User nuevoUser = new User();
+    Pelicula nuevoPelicula = new User();
     UserDAO usDAO = new UserDAO();
     int id;
 
