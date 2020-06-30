@@ -1,3 +1,20 @@
-# Los archivos de JAva estan en la carpeta SRC
-# Los archivos de JSP en WEBCONTENT
-# Para usar el archivo .class, estan en la carpeta BUILD
+# Notas
+
+## Necesitamos
+
+#Administrador
+- Admin usuarios
+- Admin Series
+- Admin Peliculas
+- Admin Noticias
+- Admin Profile
+
+#Usuario
+- User vista series
+- User vista peliculas
+- User vista noticias
+- User Profile
+- User Comentarios
+
+- Comentarios 
+
