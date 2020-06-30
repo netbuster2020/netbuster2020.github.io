@@ -3,26 +3,26 @@
 <html>
     <head>
         <%@ include file="../../../partials/head.jsp" %>
-        <title>Añadir serie</title>
+        <title>Añadir pelicula</title>
     </head>
     <body>
         <%@ include file="../../../layouts/nav-dash.jsp" %>
 
         <div class="container">
             <div class="col-lg-6">
-                <h1>Agregar series</h1>
-                <form action="Series">
+                <h1>Agregar pelicula</h1>
+                <form action="Peliculas">
                     Nombre: <br>
-                    <input class="form-control" type="text" name="nombre_s"><br>
+                    <input class="form-control" type="text" name="nombre_p"><br>
                     Generos: <br>
-                    <input class="form-control" type="text" name="genero_s"><br>
+                    <input class="form-control" type="text" name="genero_p"><br>
                     Reseña: <br>
-                    <input class="form-control" type="text" name="resena_s"><br>
+                    <input class="form-control" type="text" name="resena"><br>
                     Imagen: <br>
-                    <input class="form-control" type="text" name="foto_s"><br>
+                    <input class="form-control" type="text" name="foto"><br>
 
                     <input class="btn btn-primary" type="submit" name="accion" value="Agregar">
-                    <a href="Series?accion=listar">Regresar</a>
+                    <a href="Peliculas?accion=listar">Regresar</a>
                 </form>
             </div>
         </div>
