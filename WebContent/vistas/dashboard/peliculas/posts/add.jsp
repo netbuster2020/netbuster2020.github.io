@@ -94,7 +94,7 @@
                                         maxlength: 60
                                     },
                                     premios: {
-                                        required: true
+                                        required: true,
                                         minlength: 10,
                                         maxlength: 100
                                     },
@@ -102,12 +102,12 @@
                                         required: true,
                                         minlength: 10,
                                         maxlength: 500
-                                    }
+                                    },
                                     foto: {
                                         required: true,
                                         minlength: 10,
                                         maxlength: 300
-                                    }
+                                    },
                                     video: {
                                         required: true,
                                         minlength: 10,

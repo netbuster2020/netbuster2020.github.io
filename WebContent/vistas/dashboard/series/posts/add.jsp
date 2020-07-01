@@ -94,25 +94,25 @@
                                         maxlength: 40
                                     },
                                     plataforma: {
-                                        required: true
+                                        required: true,
                                         minlength: 5,
                                         maxlength: 100
                                     },
                                     estado : {
-                                        required: true                                 
+                                        required: true,                               
                                         minlength: 6,
                                         maxlength: 20
-                                    }
+                                    },
                                     resena_s : {
-                                        required: true                             
+                                        required: true,                       
                                         minlength: 10,
                                         maxlength: 500
-                                    }
+                                    },
                                     foto_s: {
                                         required: true,
                                         minlength: 10,
                                         maxlength: 300
-                                    }
+                                    },
                                     video_s: {
                                         required: true,
                                         minlength: 10,
@@ -168,8 +168,6 @@
                                          minlength: "Debe tener mínimo 10 caracteres",
                                         maxlength: "Puede tener hasta un máximo de 300 caracteres"
                                     },
-                                    
-                                    
                                 }
                             });
                         </script>
