@@ -158,8 +158,6 @@
                                          minlength: "Debe tener mínimo 10 caracteres",
                                         maxlength: "Puede tener hasta un máximo de 300 caracteres"
                                     },
-                                    
-                                    
                                 }
                             });
                         </script>
