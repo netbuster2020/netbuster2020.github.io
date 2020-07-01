@@ -57,14 +57,26 @@ public class AdminSeries extends HttpServlet{
         else if(action.equalsIgnoreCase("Agregar")){
 
             String nombre_s=request.getParameter("nombre_s");
+            String ano_estreno=request.getParameter("ano_estreno");
+            String n_temporadas=request.getParameter("n_temporadas");
+            String ideoma_original=request.getParameter("ideoma_original");
             String genero_s=request.getParameter("genero_s");
+            String plataforma=request.getParameter("plataforma");
+            String estado=request.getParameter("estado");
             String resena_s=request.getParameter("resena_s");
             String foto_s=request.getParameter("foto_s");
+            String video_s=request.getParameter("video_s");
 
             nuevaSerie.setNombre_s(nombre_s);
+            nuevaSerie.setAno_estreno(ano_estreno);
+            nuevaSerie.setN_temporadas(n_temporadas);
+            nuevaSerie.setIdeoma_original(ideoma_original);
             nuevaSerie.setGenero_s(genero_s);
+            nuevaSerie.setPlataforma(plataforma);
+            nuevaSerie.setEstado(estado);
             nuevaSerie.setResena_s(resena_s);
             nuevaSerie.setFoto_s(foto_s);
+            nuevaSerie.setVideo_s(video_s);
 
             newSerieDao.add(nuevaSerie);
             acceso=listar;
@@ -78,15 +90,27 @@ public class AdminSeries extends HttpServlet{
             id=Integer.parseInt(request.getParameter("txtid"));
 
             String nombre_s=request.getParameter("nombre_s");
+            String ano_estreno=request.getParameter("ano_estreno");
+            String n_temporadas=request.getParameter("n_temporadas");
+            String ideoma_original=request.getParameter("ideoma_original");
             String genero_s=request.getParameter("genero_s");
+            String plataforma=request.getParameter("plataforma");
+            String estado=request.getParameter("estado");
             String resena_s=request.getParameter("resena_s");
             String foto_s=request.getParameter("foto_s");
+            String video_s=request.getParameter("video_s");
 
             nuevaSerie.setId_serie(id);
             nuevaSerie.setNombre_s(nombre_s);
+            nuevaSerie.setAno_estreno(ano_estreno);
+            nuevaSerie.setN_temporadas(n_temporadas);
+            nuevaSerie.setIdeoma_original(ideoma_original);
             nuevaSerie.setGenero_s(genero_s);
+            nuevaSerie.setPlataforma(plataforma);
+            nuevaSerie.setEstado(estado);
             nuevaSerie.setResena_s(resena_s);
             nuevaSerie.setFoto_s(foto_s);
+            nuevaSerie.setVideo_s(video_s);
 
             newSerieDao.edit(nuevaSerie);
             acceso=listar;
