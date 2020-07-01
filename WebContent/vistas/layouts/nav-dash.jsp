@@ -25,6 +25,9 @@
                             <a class="nav-link" href="Series?accion=listar">Ver Series</a>
                         </li>
 
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Peliculas?accion=listar">Ver Peliculas</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

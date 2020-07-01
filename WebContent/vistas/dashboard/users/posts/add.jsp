@@ -29,7 +29,7 @@
                                 </div>
                                 <div>
                                     <label for="username">Username</label>
-                                    <input class="form-control" type="text" name="username" maxlength="8">
+                                    <input class="form-control" type="text" name="username">
                                 </div>
                                 <div>
                                     <label for="email">Email</label>
@@ -83,7 +83,8 @@
                                     },
                                     password: {
                                         required: true,
-                                        maxlength: 60
+                                        minlength: 6,
+                                        maxlength: 8
                                     },
                                     nacimiento: {
                                         required: true
@@ -116,7 +117,7 @@
                                     },
                                     password: {
                                         required: "Debe ingresar un apellido",
-                                        maxlength: "Puede tener hasta un máximo de 60 caracteres"
+                                        maxlength: "Puede tener hasta un máximo de 8 caracteres"
                                     },
                                     nacimiento: {
                                         required: "Debe ingresar fecha de nacimiento."

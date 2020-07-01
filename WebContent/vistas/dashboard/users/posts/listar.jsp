@@ -8,6 +8,7 @@
 
                     <head>
                         <%@ include file="../../../partials/head.jsp" %>
+                        <%@ include file="../../../partials/datos.jsp" %>
                             <title>Ver Usuarios</title>
                     </head>
 

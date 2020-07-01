@@ -18,7 +18,7 @@
         <div class="container">
                                    <div class="col-lg-8">
                             <h1>Agregar Peliculas</h1>
-                            <form action="Admin" id="formulario">
+                            <form action="Peliculas" id="formulario">
                                 <div>
                                     <label for="nombre_p" class="mr-3">Nombre</label>
                                     <input class="form-control" type="text" name="nombre_p" maxlength="50">
@@ -58,7 +58,7 @@
 
 
                                 <input class="btn btn-primary" type="submit" name="accion" value="Agregar">
-                                <a href="Admin?accion=listar">Regresar</a>
+                                <a href="Peliculas?accion=listar">Regresar</a>
                             </form>
                         </div>
         </div>
@@ -85,7 +85,7 @@
                                     },
                                     genero_p: {
                                         required: true,
-                                        minlength: 10,
+                                        minlength: 4,
                                         maxlength: 40
                                     },
                                     actor_p: {
@@ -95,7 +95,7 @@
                                     },
                                     premios: {
                                         required: true,
-                                        minlength: 10,
+                                        minlength: 2,
                                         maxlength: 100
                                     },
                                     resena: {
@@ -115,7 +115,7 @@
                                     }
                                 },
                                 messages: {
-                                    nombre: {
+                                    nombre_p: {
                                         required: "Debe ingresar el nombre de la pelicula",
                                         minlength: "Debe tener mínimo 4 caracteres",
                                         maxlength: "Máximo 50 caracteres"
