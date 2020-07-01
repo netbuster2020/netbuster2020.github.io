@@ -1,7 +1,7 @@
 package Modelo;
 
 import Config.Conexion;
-import Interface.USERS;
+import Interface.PELICULAS;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -101,7 +101,7 @@ public class PeliculaDAO implements PELICULAS{
 
     @Override
     public boolean eliminar(int id) {
-        String sql="delete from pelicula where Id_pelicula="+id_pelicula;
+        String sql="delete from pelicula where Id_pelicula="+id;
         try {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
