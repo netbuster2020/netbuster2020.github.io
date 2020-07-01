@@ -25,32 +25,51 @@ public class Welcome extends HttpServlet {
         Cookie[] cks = request.getCookies();
         
         if(cks!=null){  
-            String name=cks[0].getValue();  
+            String name =cks[0].getValue();  
+            
            if(!name.equals("")||name!=null){  
-        	   
         	   String username = (String)session.getAttribute("username");
-               out.println("Bienvenido "+username+"Te has registrado exitosamente!");
+        	   
+        	   out.print("<html>");
+        	   out.print("<head>");
+        	   
+        	   out.print("</head>");
+        	   
+        	   
+        	   out.print("<main>");
+        	   
+        	   out.print("<section>");
+        	   out.print("<div class='container'>");
+        	   out.print("<div class='row'>");
+        	   out.print("<div class='col col-md-6 mg-auto'>");
+               out.println("<h1 class='display-7'>Bienvenido "+username+"</h1>");
                
-               
-               out.print("<b>Welcome to Profile</b>");  
-               out.print("<br>Welcome, "+name);  
-               
-               out.println("Hola Mr Cookies "+ cks[0].getValue());
-               
-               out.println("Seguir sesion");
+                
+               out.print("<h1>El Valor de mi Cookies es, "+name+"</h1>");  
+
 
                Enumeration nombresSesion = session.getAttributeNames();
+               
                while (nombresSesion.hasMoreElements()) {
                    String nombre = nombresSesion.nextElement().toString();
                    Object valor = session.getAttribute(nombre);
-                   out.println(nombre + " = " + valor + "<br>");
+                   
+                   out.println("<h1 class='display-4'>"+ nombre + " = " + valor + "<h1>");
                }
+               
                out.println("<h3> Estadisticas de la sesion</h3>");
                out.println("ID Sesion:"  + session.getId() + "<br>");
                out.println("Nueva Sesion"  + session.isNew());
                out.println("Hora de creacion: " + session.getCreationTime());
                out.println("Intervalo de inactividad de la sesion: " + session.getMaxInactiveInterval());
                out.println("ID de sesion desde cookie: " + request.isRequestedSessionIdFromCookie());
+               
+               out.print("</div>");
+               out.print("</div>");
+               out.print("</div>");
+               out.print("</section>");
+               out.print("</main>");
+               out.print("</html>");
            }  
            }else{  
                out.print("Por favor registrate.");  
