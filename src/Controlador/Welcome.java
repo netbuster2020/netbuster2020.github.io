@@ -32,13 +32,10 @@ public class Welcome extends HttpServlet {
         	   
         	   out.print("<html>");
         	   out.print("<head>");
-        	   
         	   out.print("</head>");
-        	   
-        	   
         	   out.print("<main>");
-        	   
         	   out.print("<section>");
+        	   
         	   out.print("<div class='container'>");
         	   out.print("<div class='row'>");
         	   out.print("<div class='col col-md-6 mg-auto'>");

@@ -72,7 +72,7 @@ public class UserDAO implements USERS{
 
     @Override
     public boolean add(User us) {
-       String sql="insert into usuario (Email, Nombre, Apellido, Password, Nacimiento, Username, Admin)values('"+us.getEmail()+"','"+us.getNombre()+"','"+us.getApellido()+"','"+us.getPassword()+"','"+us.getNacimiento()+"','"+us.getUsername()+"','"+us.getAdmin()+"')";
+       String sql="insert into usuario (Email, Nombre, Apellido, Password, Nacimiento, Username, Admin)values('"+us.getEmail()+"','"+us.getNombre()+"','"+us.getApellido()+"','"+us.getPassword()+"','"+us.getNacimiento()+"','"+us.getUsername()+"','"+us.getAdmin()+"');";
         try {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);

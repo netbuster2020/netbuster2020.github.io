@@ -1,8 +1,5 @@
 package Controlador;
 
-import Modelo.User;
-import Modelo.UserDAO;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -12,17 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AdminUser extends HttpServlet{
-	
+import Modelo.User;
+import Modelo.UserDAO;
+
+public class VistaIndex extends HttpServlet{
+
 	String listar="vistas/dashboard/users/posts/listar.jsp";
 	
     String add="vistas/dashboard/users/posts/add.jsp";
     
     String edit="vistas/dashboard/users/posts/edit.jsp";
-
-    User nuevoUser = new User();
-    UserDAO usDAO = new UserDAO();
-    int id;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,7 +28,7 @@ public class AdminUser extends HttpServlet{
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Usuarios</title>");            
+            out.println("<title>Index</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
@@ -55,62 +51,17 @@ public class AdminUser extends HttpServlet{
         }
         else if(action.equalsIgnoreCase("Agregar")){
 
-            String email=request.getParameter("email");
-            String nombre=request.getParameter("nombre");
-            String apellido=request.getParameter("apellido");
-            String password=request.getParameter("password");
-            String nacimiento=request.getParameter("nacimiento");
-            String username=request.getParameter("username");
-            String admin=request.getParameter("admin");
-            
-            
-            nuevoUser.setEmail(email);
-            nuevoUser.setNombre(nombre);
-            nuevoUser.setApellido(apellido);
-            nuevoUser.setPassword(password);
-            nuevoUser.setNacimiento(nacimiento);
-            nuevoUser.setUsername(username);
-            nuevoUser.setAdmin(admin);
-
-            usDAO.add(nuevoUser);
             acceso=listar;
         }
         else if(action.equalsIgnoreCase("editar")){
-            request.setAttribute("idper",request.getParameter("id"));
+
             acceso=edit;
         }
         else if(action.equalsIgnoreCase("Actualizar")){
-            
-            id=Integer.parseInt(request.getParameter("txtid"));
 
-            String email=request.getParameter("email");
-            String nombre=request.getParameter("nombre");
-            String apellido=request.getParameter("apellido");
-            String password=request.getParameter("password");
-            String nacimiento=request.getParameter("nacimiento");
-            String username=request.getParameter("username");
-            String admin=request.getParameter("admin");
-
-            nuevoUser.setId_user(id);
-            nuevoUser.setEmail(email);
-            nuevoUser.setNombre(nombre);
-            nuevoUser.setApellido(apellido);
-            nuevoUser.setPassword(password);
-            nuevoUser.setNacimiento(nacimiento);
-            nuevoUser.setUsername(username);
-            nuevoUser.setAdmin(admin);
-
-            usDAO.edit(nuevoUser);
             acceso=listar;
         }
-        else if(action.equalsIgnoreCase("eliminar")){
-            id=Integer.parseInt(request.getParameter("id"));
-
-            nuevoUser.setId_user(id);   
-
-            usDAO.eliminar(id);
-            acceso=listar;
-        }
+        
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }
