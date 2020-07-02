@@ -38,15 +38,21 @@ public class Entrar extends HttpServlet {
             	String prueba = rs.getString("admin");
             	
             	Cookie ck=new Cookie("name", username);
-                response.addCookie(ck); 
+            	ck.setMaxAge(180);
+                response.addCookie(ck);
+                
+                ck=new Cookie("admin", prueba);
+            	ck.setMaxAge(180);
+                response.addCookie(ck);
             	
+                
             	
             	if(!prueba.equals("0")) {
             		out.print("<br>Welcome, " + username);  
                     
-                    response.sendRedirect("WelcomeUser.jsp?name="+prueba);
+                    response.sendRedirect("WelcomeUser.jsp");
             	}	else {
-            		out.print("<h1>Cliente</h1>");  
+            		response.sendRedirect("Miperfil");
             	}
                 
             }else{  
