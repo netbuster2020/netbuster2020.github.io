@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class AdminProfile extends HttpServlet {
+public class Welcome extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -22,36 +22,39 @@ public class AdminProfile extends HttpServlet {
         
         
         HttpSession session = request.getSession();
+        
         Cookie[] cks = request.getCookies();
         
-        if(cks!=null){  
-            String name =cks[0].getValue();  
-            
-           if(!name.equals("")||name!=null){  
-        	   String username = (String)session.getAttribute("username");
-        	   
-        	   out.print("<html>");
-        	   out.print("<head>");
-        	   out.print("</head>");
-        	   out.print("<main>");
-        	   out.print("<section>");
-        	   
-        	   out.print("<div class='container'>");
-        	   out.print("<div class='row'>");
-        	   out.print("<div class='col col-md-6 mg-auto'>");
-               out.println("<h1 class='display-7'>Bienvenido "+username+"</h1>");
-               
+        String	usuario = null;
                 
-               out.print("<h1>El Valor de mi Cookies es, "+name+"</h1>");  
-
+        for (int i = 0; i < cks.length; i++) {
+        	
+    		if (cks[i].getName().equals("username")) {
+    	
+    			usuario = cks[i].getValue();
+    		}    		
+        }    
+               
+        if(!usuario.equals("")||usuario!=null){  
+        	   
+        	   String username = (String)session.getAttribute("username");
+               out.println("Bienvenido "+username+"Te has registrado exitosamente!");
+               
+               
+               out.print("<b>Welcome to Profile</b>");  
+               out.print("<br>Welcome, "+usuario);  
+               
+               out.println("Hola Mr Cookies "+ cks[0].getValue());
+               
+               out.println("Seguir sesion");
 
                Enumeration nombresSesion = session.getAttributeNames();
                
                while (nombresSesion.hasMoreElements()) {
+            	   
                    String nombre = nombresSesion.nextElement().toString();
                    Object valor = session.getAttribute(nombre);
-                   
-                   out.println("<h1 class='display-4'>"+ nombre + " = " + valor + "<h1>");
+                   out.println(nombre + " = " + valor + "<br>");
                }
                
                out.println("<h3> Estadisticas de la sesion</h3>");
@@ -61,19 +64,17 @@ public class AdminProfile extends HttpServlet {
                out.println("Intervalo de inactividad de la sesion: " + session.getMaxInactiveInterval());
                out.println("ID de sesion desde cookie: " + request.isRequestedSessionIdFromCookie());
                
-               out.print("</div>");
-               out.print("</div>");
-               out.print("</div>");
-               out.print("</section>");
-               out.print("</main>");
-               out.print("</html>");
-           	}  
-           }else{  
+           
+             
+           } else {
+        	   
                out.print("Por favor registrate.");  
-               request.getRequestDispatcher("login.jsp").include(request, response);  
-           }  
-           out.close(); 
-        
+               
+               request.getRequestDispatcher("login.jsp").include(request, response); 
+               
+           }
+  
+               out.close(); 
         
     
       }  

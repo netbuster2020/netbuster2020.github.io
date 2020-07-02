@@ -12,10 +12,11 @@ public class LoginDAO {
 		boolean st = false;
 	    
 	    try {
+            //loading drivers for mysql
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netbuster","root","coder@2020@basmonje");
-            
-            
+
+            //creating connection with the database
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netbuster","root","coder@2020@awakelab");
             PreparedStatement ps = con.prepareStatement("select * from usuario where username=? and password=?");
             ps.setString(1, username);
             ps.setString(2, password);
@@ -30,21 +31,20 @@ public class LoginDAO {
 	 
 	}       	    
 
-	public static User sesionUsuario(String username) {
+	public static  User sesionUsuario(String username) {
 		
 		User p = new User();
-			Connection con;
-			PreparedStatement ps;
-			ResultSet rs;
 			
+
 	    try {    	
 	    	
+            //loading drivers for mysql
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netbuster","root","coder@2020@basmonje");
-            String sql = "select * from usuario where username="+username+";";
-            ps = con.prepareStatement(sql);
-            
-            rs = ps.executeQuery();
+
+            //creating connection with the database
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netbuster","root","coder@2020@awakelab");
+            PreparedStatement ps = con.prepareStatement("select * from usuario where username="+username);
+            ResultSet rs =ps.executeQuery();
 
 	           while(rs.next()){
 	        	   
@@ -54,11 +54,16 @@ public class LoginDAO {
 	                
 	            }
 	           
-	        } 	catch (Exception e) {
+	        } 
+	    
+	    catch (Exception e) {
 	    	
 	        }
 	    
-	    	return p;
+	    return p;
 	    
 	    }
+	
+	
+
 }

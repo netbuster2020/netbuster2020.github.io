@@ -7,19 +7,28 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;  
-public class Logout extends HttpServlet {  
+public class ProfileServlet extends HttpServlet {  
     protected void doGet(HttpServletRequest request, HttpServletResponse response)  
-                        throws ServletException, IOException {  
+                          throws ServletException, IOException {  
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
           
-          
         request.getRequestDispatcher("administrador.jsp").include(request, response);  
           
-        Cookie ck=new Cookie("name","");  
-        ck.setMaxAge(0);  
-        response.addCookie(ck);  
-          
-        out.print("you are successfully logged out!");  
+        Cookie ck[]=request.getCookies();  
+        
+        if(ck!=null){  
+        	
+         String name=ck[0].getName();  
+         
+        if(!name.equals("")||name!=null){  
+            out.print("<bBienvenido a mi perfil</b>");  
+            out.print("<br>Hola, "+name);  
+        }  
+        }else{  
+            out.print("Please login first");  
+            request.getRequestDispatcher("login.jsp").include(request, response);  
+        }  
+        out.close();  
     }  
 } 

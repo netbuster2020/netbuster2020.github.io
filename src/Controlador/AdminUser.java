@@ -22,6 +22,7 @@ public class AdminUser extends HttpServlet{
 
     User nuevoUser = new User();
     UserDAO usDAO = new UserDAO();
+    
     int id;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
