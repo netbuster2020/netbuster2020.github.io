@@ -1,4 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Modelo.User"%>
+<%@page import="Modelo.UserDAO"%>
+
 
     <header class="bg-dark">
         <div class="container py-1 mb-4">

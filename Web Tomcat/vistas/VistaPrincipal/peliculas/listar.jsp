@@ -26,14 +26,14 @@
         <header class="jumbotron my-4">
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"></div>
           <h1 class="display-3">Catálogo de Peliculas</h1>
-          <p class="lead"></p>
+          
         </header>
     </div>
 
     <div class="container">
         <div class="row">
 
-            <%
+              <%
                     PeliculaDAO dao=new PeliculaDAO();
                     List<Pelicula>list=dao.listar();
                     Iterator<Pelicula>iter=list.iterator();
@@ -42,6 +42,7 @@
                         addPelicula=iter.next();
                 %>
 
+                
                 
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card h-100">

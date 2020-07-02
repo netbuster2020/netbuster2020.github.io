@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@ include file="../../../partials/head.jsp" %>
+    <%@ include file="../../../partials/head.jsp" %>
 
         
-        <title>Añadir pelicula</title>
+    <title>Añadir pelicula</title>
 
         
-            <!-- JQUERY VALIDATION JQYERY -->
-            <%@ include file="../../../partials/datos.jsp" %>
-            <!-- Fin -->
+    <!-- JQUERY VALIDATION JQYERY -->
+    <%@ include file="../../../partials/datos.jsp" %>
+    <!-- Fin -->
     </head>
     <body>
         <%@ include file="../../../layouts/nav-dash.jsp" %>

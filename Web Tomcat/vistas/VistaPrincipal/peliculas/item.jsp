@@ -83,7 +83,11 @@
                     </div>
                 </div>
 
-                  
+                <div class="card mt-4">
+                  <div class="card-body text-center">
+                    <iframe width="100%" height="315" src="<%= pelicula.getVideo()%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </div>
             </div>
 
             <!-- Sidebar -->

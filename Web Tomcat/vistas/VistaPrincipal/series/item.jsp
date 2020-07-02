@@ -36,7 +36,7 @@
         <div class="row">
 
 
-            <div class="col col-md-8">
+            <div class="col-12 col-md-8">
                 
                 <!-- Card -->
                 <div class="card">
@@ -56,7 +56,7 @@
                               <td><%= serie.getGenero_s()%></td>
                             </tr>
                             <tr>
-                              <td colspan="2">Año de getAno_estreno</td>
+                              <td colspan="2">Año de estreno</td>
                               <td><%= serie.getAno_estreno()%></td>
                             </tr>
                             <tr>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
 
-                <div class="card mt-4">
+                <div class="card mt-4 mb-4">
                     <div class="card-header"><%= serie.getNombre_s()%></div>
                     <div class="card-body">
                       <blockquote class="blockquote mb-0">

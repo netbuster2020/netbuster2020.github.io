@@ -1,16 +1,25 @@
 <%@page import="java.util.Iterator"%>
-<%@page import="Modelo.Serie"%>
 <%@page import="java.util.List"%>
+<%@page import="Modelo.Serie"%>
 <%@page import="Modelo.SerieDAO"%>
+<%@page import="Modelo.Pelicula"%>
+<%@page import="Modelo.PeliculaDAO"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
     <html>
 
     <head>
-        <%-- head --%>
-            <%@ include file="vistas/partials/head.jsp" %>
-                <title>Inicio Netbuster</title>
-                <%-- Fin de head --%>
+    <%-- head --%>
+    <%@ include file="vistas/partials/head.jsp" %>
+    <title>Inicio Netbuster</title>
+    <%-- Fin de head --%>
     </head>
+
+    <!-- <style>
+        .view {
+            width: 100%;
+            height: 300px;
+        }
+    </style> -->
 
 
     <%-- Cuerpo --%>
@@ -27,36 +36,47 @@
                     <main>
 
 
-                        <!-- Slide 3 imagenes -->
+                        
                         <section class="container">
-                            <!--Carousel Wrapper-->
+                            
                             <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-                                <!--Indicators-->
+                            
                                 <ol class="carousel-indicators">
                                     <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
                                     <li data-target="#carousel-example-1z" data-slide-to="1"></li>
                                     <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                                    <li data-target="#carousel-example-1z" data-slide-to="3"></li>
+                                    <li data-target="#carousel-example-1z" data-slide-to="4"></li>
+                                    <li data-target="#carousel-example-1z" data-slide-to="5"></li>
                                 </ol>
-                                <!--/.Indicators-->
-                                <!--Slides-->
+                                
                                 <div class="carousel-inner" role="listbox">
-                                    <!--First slide-->
+
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(141).jpg" alt="First slide">
+                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/silicon-valley-aly-mawji-aly-dutta_51454_1280x720.jpg" alt="First slide">
                                     </div>
-                                    <!--/First slide-->
-                                    <!--Second slide-->
+                                    
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(136).jpg" alt="Second slide">
+                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/black-panther-scratches-captain-americas-shield_64808_1280x720.jpg" alt="First slide">
                                     </div>
-                                    <!--/Second slide-->
-                                    <!--Third slide-->
+                                    
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(137).jpg" alt="Third slide">
+                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/solo-a-star-wars-story-2018-cover_62184_1280x720.jpg" alt="Second slide">
                                     </div>
-                                    <!--/Third slide-->
-                                </div>
-                                <!--/.Slides-->
+                                
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/avengers-infinity-war-latest-poster-2018_62270_1280x720.jpg" alt="Third slide">
+                                    </div>
+
+                                     <div class="carousel-item">
+                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/the-mandalorian-character-art_71562_1280x720.jpg" alt="Third slide">
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/daenerys-and-dragon-got_71086_1280x720.jpg" alt="Third slide">
+                                    </div>
+                                </div>  
+                                
                                 <!--Controls-->
                                 <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -78,21 +98,17 @@
                                 <div class="py-5">
                                     <!-- Content -->
                                     <h2 class="card-title h2 my-4 py-2">NetBuster</h2>
-                                    <a href="vistas/VistaPrincipal/peliculas/listar.jsp">quiero ver</a>
                                     <p class="mb-4 pb-2 px-md-5 mx-md-5">Catalogada como la mejor pagina de reseñas del 7° <br> arte La modestia es para el resto.</p>
-                                    <a class="btn peach-gradient"><i class="fas fa-clone left"></i> Donar</a>
                                 </div>
                             </div>
                         </section>
                         <!-- fin Mensaje bienvenida -->
 
-                        <hr class="my-5">
-
                         
                         <!-- Card contenido -->
                         <section class="container py-5">
                             
-                            <div class="row row-cols-1 row-cols-md-3">
+                            <div class="row ">
 
                                 
                                 <!-- Primer item - Luego copiar -->
@@ -104,29 +120,49 @@
                     while(iter.hasNext()){
                         addSerie=iter.next();
                     
-                %>
-                                <div class="col mb-4">
+                                %>
+                                <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="card h-100">
                                         <!--Card image-->
-                                        <div class="view overlay">
-                                            <img class="card-img-top" src="<%= addSerie.getFoto_s()%>" alt="Card image cap">
-                                            <a href="#!">
-                                                <div class="mask rgba-white-slight"></div>
-                                            </a>
+                                        <div class="view">
+                                            <img class="card-img-top img-fluid" style="width:100%" src="<%= addSerie.getFoto_s()%>" alt="Card image cap">
                                         </div>
 
                                         <!--Card content-->
-                                        <div class="card-body">
+                                        <div class="card-body"> 
+                                            <p>⭐ <%= addSerie.getN_temporadas()%></p>
                                             <h4 class="card-title"><%= addSerie.getNombre_s()%></h4>
-                                            <p><%= addSerie.getGenero_s()%></p>
-                                            <p class="card-text"><%= addSerie.getResena_s()%></p>
-                                            <a class="btn btn-warning" href="Series?accion=editar&id=<%= addSerie.getId_serie()%>">Leer más</a>
-                                            <button type="button" class="btn btn-light-blue btn-md">Leer más</button>
+                                            <a class="btn btn-primary" href="Verseries?accion=serie_inv&id=<%= addSerie.getId_serie()%>">Ver más</a>
                                         </div>
                                     </div>
                                 </div>
                                 <%}%>
                                 <!--  Fin Primer item - Luego copiar -->
+
+                                <%
+                    PeliculaDAO pedao=new PeliculaDAO();
+                    List<Pelicula>listMovie=pedao.listar();
+                    Iterator<Pelicula>iterPelicula=listMovie.iterator();
+                    Pelicula addPelicula=null;
+                    while(iterPelicula.hasNext()){
+                        addPelicula=iterPelicula.next();
+                %>
+
+                
+                
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card h-100">
+                  <img class="card-img-top" src="<%= addPelicula.getFoto()%>" alt="">
+                  <div class="card-body">
+                    <h4 class="card-title"><%= addPelicula.getNombre_p()%></h4>
+                    <p class="card-text"><strong><td class="text-center"><%= addPelicula.getGenero_p()%></td></strong><br></p>
+                  </div>
+                  <div class="card-footer">
+                    <a class="btn btn-primary" href="Movie?accion=pelicula_inv&id=<%= addPelicula.getId_pelicula()%>">Ver más</a>
+                  </div>
+                </div>
+              </div>
+            <%}%>
 
                             </div>
                         </section>
@@ -140,6 +176,11 @@
             <script src="assets/plugins/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
             <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
             <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+            <div class="container">
+                
+            </div>
         </body>
 
     </html>

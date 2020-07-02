@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" >
+<!-- Logout -->
+    <servlet>  
+        <description>Cerrar sesión</description>  
+        <display-name>Logout</display-name>  
+        <servlet-name>Logout</servlet-name>  
+        <servlet-class>Controlador.Logout</servlet-class>  
+    </servlet>  
 
+    <servlet-mapping>  
+        <servlet-name>Logout</servlet-name>  
+        <url-pattern>/Logout</url-pattern>  
+    </servlet-mapping>
 
+<!-- Fin logout -->
 <!-- Login -->
     <servlet>
         <servlet-name>login</servlet-name>
-        <servlet-class>Controlador.Login</servlet-class>
+        <servlet-class>Controlador.Entrar</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -13,6 +25,21 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 <!-- Fin de Login -->
+
+<!-- ProfileUser -->
+    <servlet>  
+        <description>Profile usuario</description>  
+        <display-name>ProfileUSer</display-name>  
+        <servlet-name>ProfileUSer</servlet-name>  
+        <servlet-class>Controlador.ProfileServlet</servlet-class>  
+    </servlet>  
+
+    <servlet-mapping>  
+        <servlet-name>ProfileUSer</servlet-name>  
+        <url-pattern>/Miperfil</url-pattern>  
+    </servlet-mapping>
+
+<!-- Fin ProfileUser -->
 
 <!-- Administrador -->
 <servlet>
@@ -90,18 +117,6 @@
 
 <!--  Fin Crud de Pelicula de administrador -->
 
-    <!-- <servlet>  
-        <description>Cerrar sesión</description>  
-        <display-name>Logout</display-name>  
-        <servlet-name>Logout</servlet-name>  
-        <servlet-class>Controlador.Logout</servlet-class>  
-    </servlet>  
-
-    <servlet-mapping>  
-        <servlet-name>Logout</servlet-name>  
-        <url-pattern>/Logout</url-pattern>  
-    </servlet-mapping> -->
-
 
 <!--  Vista index peliculas -->
 
@@ -134,6 +149,47 @@
     </servlet-mapping>
 
 <!--  Fin Vista index Series -->
+
+
+<!-- jsp -->
+
+
+<servlet>
+        <servlet-name>register</servlet-name>
+        <jsp-file>/start.jsp</jsp-file>
+</servlet>
+
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/Prueba/*</url-pattern>
+    </servlet-mapping>
+
+
+<!-- jsp -->
+
+<!-- jsp -->
+
+
+<servlet>
+        <servlet-name>Noticias</servlet-name>
+        <jsp-file>/news.jsp</jsp-file>
+    </servlet>
+
+  <servlet-mapping>
+        <servlet-name>Noticias</servlet-name>
+        <url-pattern>/Noticias/*</url-pattern>
+</servlet-mapping>
+
+
+
+<!-- jsp -->
+
+<!-- Error 404 -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+<!-- Error -->
 
         <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
