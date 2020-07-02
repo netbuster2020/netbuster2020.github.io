@@ -1,5 +1,8 @@
 package Controlador;
 
+import Modelo.LoginDAO;
+import Modelo.User;
+
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -15,18 +18,30 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
-        if(Validate.checkUser(username, password)){
+       
+        if(LoginDAO.checkUser(username, password)){
+        
+        	User p = LoginDAO.sesionUsuario(username);
+        
+        	Cookie ck = new Cookie("username", p.getUsername());
+        	ck.setMaxAge(180);
+        	response.addCookie(ck);        
+        
+        	ck = new Cookie("admin", p.getAdmin());
+        	ck.setMaxAge(180);
+        	response.addCookie(ck);
+ 
         	
-        	HttpSession session = request.getSession();
-            session.setAttribute("username", username);
+        	ck = new Cookie("IDUsuario", String.valueOf(p.getId_user()));
+        	ck.setMaxAge(180);
+        	response.addCookie(ck);
             
-            Cookie ck = new Cookie("username", username);
-            response.addCookie(ck);
-            response.sendRedirect("Welcome");
+            response.sendRedirect("Welcome"); 
             
         }
         else
         {
+        	
            RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
            out.println("Username o Contraseña incorrectos");
            rs.include(request, response);
