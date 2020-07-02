@@ -34,7 +34,7 @@ create table COMENTARIO
 create table COMENTARIO_PELICULA
 (
    ID_COM_PEL		int not null AUTO_INCREMENT,
-   ID_SERIE             int not null,
+   ID_PELICULA             int not null,
    ID_COMENTARIO        int not null,
    primary key (ID_COM_PEL, ID_COMENTARIO)
 );
@@ -45,7 +45,7 @@ create table COMENTARIO_PELICULA
 create table COMENTARIO_SERIE
 (
    ID_COM_SER		int not null AUTO_INCREMENT,
-   ID_PELICULA          int not null,
+   ID_SERIE          int not null,
    ID_COMENTARIO        int not null,
    primary key (ID_COM_SER, ID_COMENTARIO)
 );
