@@ -92,3 +92,7 @@
       font-size: 182px;
   }
 }
+
+.bg-azul {
+  background-color: rgb(14, 63, 169) !important;
+}

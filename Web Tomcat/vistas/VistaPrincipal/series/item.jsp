@@ -1,5 +1,9 @@
 <%@page import="Modelo.Serie"%>
 <%@page import="Modelo.SerieDAO"%>
+<%@page import="Modelo.Comentario"%>
+<%@page import="Modelo.ComentarioDAO"%>
+<%@page import="Modelo.ComentarioSerie"%>
+<%@page import="Modelo.ComentarioSerieDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -87,31 +91,34 @@
                     </div>
                 </div>
 
-                  
-            </div>
-
-            <!-- Sidebar -->
-            <div class="col col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                      <h5 class="card-title">Panel title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Panel subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's content.</p>
-                      <a href="#!" class="card-link">Card link</a>
-                      <a href="#!" class="card-link">Another link</a>
-                    </div>
+                <div class="card mt-4">
+                  <div class="card-body text-center">
+                    <iframe width="100%" height="315" src="<%= serie.getVideo_s()%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
+				</div>
 
-                  <div class="card mt-4">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                  </div>
+				<%
+	ComentarioDAO newComentario =new ComentarioDAO();
+	
+	int id=Integer.parseInt((String)request.getAttribute("idper"));
+	
+    Serie Comentario =(Serie)newComentario.list(id);
+    %>
+				
+
+                <div class="card mt-4 mb-4">
+					<div class="card mt-3 m-4 mb-3">
+						<div class="card-header"><%= Comentario.getMensaje()%></div>
+						<div class="card-body">
+						  <blockquote class="blockquote mb-0">
+							<p>Comentario</p>
+							<footer class="blockquote-footer">Fecha <cite title="Source Title">2020/05/02</cite></footer>
+						  </blockquote>
+						</div>
+					</div>
+              	</div>
+
             </div>
-            
-
         </div>
     </div>
 

@@ -47,6 +47,7 @@ public class AdminSeries extends HttpServlet{
             throws ServletException, IOException {
                 
         String acceso="";
+        
         String action=request.getParameter("accion");
 
         if(action.equalsIgnoreCase("listar")){

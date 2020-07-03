@@ -19,7 +19,7 @@ public class Entrar extends HttpServlet {
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
           
-        request.getRequestDispatcher("administrador.jsp").include(request, response);  
+        String PerfilCliente ="Perfil.jsp"; 
           
         String username=request.getParameter("username");  
         String password=request.getParameter("password");  
@@ -31,33 +31,39 @@ public class Entrar extends HttpServlet {
             Statement stmt = con.createStatement();
             
             
-            ResultSet rs = stmt.executeQuery("select username,password, admin from usuario where username='"+username+"' and password='"+password+"'");
+            ResultSet rs = stmt.executeQuery("select username,password,id_user admin from usuario where username='"+username+"' and password='"+password+"'");
             
             if(rs.next()){  
             	
-            	String prueba = rs.getString("admin");
+            	String admin = rs.getString("admin");
+            	String id_user = rs.getString("id_user");
+            	
             	
             	Cookie ck=new Cookie("name", username);
             	ck.setMaxAge(180);
                 response.addCookie(ck);
                 
-                ck=new Cookie("admin", prueba);
+                ck=new Cookie("admin", admin);
             	ck.setMaxAge(180);
                 response.addCookie(ck);
+                
+                ck = new Cookie("id_usuario", id_user);
+            	ck.setMaxAge(180);
+            	response.addCookie(ck);
             	
                 
             	
-            	if(!prueba.equals("0")) {
+            	if(!admin.equals("0")) {
             		out.print("<br>Welcome, " + username);  
                     
-                    response.sendRedirect("WelcomeUser.jsp");
+                    response.sendRedirect("Series?accion=listar");
             	}	else {
-            		response.sendRedirect("Miperfil");
+            		response.sendRedirect(PerfilCliente);
             	}
                 
             }else{  
-                out.print("sorry, username or password error!");  
-                request.getRequestDispatcher("login.jsp").include(request, response);  
+            	out.print("<div class='container alert alert-danger' role='alert'>");  
+                out.print("Username o Password incorrectos!</div>");  
             }
             
             

@@ -33,8 +33,8 @@
                                 <label class="form-check-label" for="exampleCheck1">Recordarme</label>
                             </div> -->
 
-
-                            <button type="submit"  value="login" class="btn btn-primary">Ingresar</button>
+                            <button type="submit" value="Login"  class="btn btn-primary">Ingresar</button>
+                            <a class="btn btn-dark" href="Registrar?accion=add">Registrar</a>
                         </form>
                     </div>
                 </div>

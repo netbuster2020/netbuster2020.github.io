@@ -1,6 +1,5 @@
 package Controlador;
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -13,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import Modelo.Pelicula;
 import Modelo.PeliculaDAO;
 
-
-public class AdminPeliculas extends HttpServlet{
+public class Comentarios extends HttpServlet{
 
     /* vistas cliente */
 	

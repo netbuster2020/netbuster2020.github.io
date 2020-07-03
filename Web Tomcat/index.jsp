@@ -96,6 +96,8 @@
                         <section class="container">
                             <div class="text-center rgba-stylish-strong py-5 px-4">
                                 <div class="py-5">
+
+
                                     <!-- Content -->
                                     <h2 class="card-title h2 my-4 py-2">NetBuster</h2>
                                     <p class="mb-4 pb-2 px-md-5 mx-md-5">Catalogada como la mejor pagina de reseñas del 7° <br> arte La modestia es para el resto.</p>
