@@ -1,9 +1,14 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
 <%@page import="Modelo.Serie"%>
 <%@page import="Modelo.SerieDAO"%>
 <%@page import="Modelo.Comentario"%>
 <%@page import="Modelo.ComentarioDAO"%>
 <%@page import="Modelo.ComentarioSerie"%>
 <%@page import="Modelo.ComentarioSerieDAO"%>
+<%@page import="Modelo.User"%>
+<%@page import="Modelo.UserDAO"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -97,29 +102,71 @@
                   </div>
 				</div>
 
-				<%
-	ComentarioDAO newComentario =new ComentarioDAO();
-	
-	int id=Integer.parseInt((String)request.getAttribute("idper"));
-	
-    Serie Comentario =(Serie)newComentario.list(id);
-    %>
-				
+		
+               <%
+                    ComentarioDAO dao = new ComentarioDAO();
+                    List<Comentario>listacomentarios = dao.ListaComentarioSerie(id);
+                    Iterator<Comentario>iter=listacomentarios.iterator();
+                    Comentario comentario=null;
 
-                <div class="card mt-4 mb-4">
-					<div class="card mt-3 m-4 mb-3">
-						<div class="card-header"><%= Comentario.getMensaje()%></div>
-						<div class="card-body">
-						  <blockquote class="blockquote mb-0">
-							<p>Comentario</p>
-							<footer class="blockquote-footer">Fecha <cite title="Source Title">2020/05/02</cite></footer>
-						  </blockquote>
-						</div>
-					</div>
-              	</div>
 
-            </div>
+
+                    while(iter.hasNext()){
+                        comentario=iter.next();
+                %>
+
+
+
+                <%
+                   UserDAO newUser = new UserDAO();
+                   int idu = comentario.getId_user();
+                   User user =(User)newUser.list(idu);
+                %>
+
+
+                 <div class="card mt-4 mb-4">
+			    	         	<div class="card mt-3 m-4 mb-3">
+                    <h1>  
+                    
+                    <%=user.getUsername()%>
+                    
+                     </h1>
+				          	     	<div class="card-header"><%= comentario.getMensaje()%></div>
+					                   	<div class="card-body">
+						                   <blockquote class="blockquote mb-0">
+						                 	
+						                	<footer class="blockquote-footer">Fecha <cite title="Source Title"><%= comentario.getFecha_ahora()%></cite></footer>
+					                	  </blockquote>
+					                  	</div>
+			                		</div>
+
+                    	</div>
+            <%}%>
+
+
+
+
+    <div class="container">
+      <div class="col-lg-6">
+      <h1>Nuevo Comentario</h1>
+      <form action="Verseries" id="formulario">
+      Mensaje: <br>
+      <textarea class="form-control" type="text" name="mensaje"></textarea>
+      <input type="hidden" id="id" name="id" value="<%=String.valueOf(id)%>">
+      <input class="btn btn-primary" type="submit" name="accion" value="Agregar">
+      </form>
+      </div>
+      </div>
+
+      
+  
+
+
+
+              </div>
+        
         </div>
+
     </div>
 
 </section>

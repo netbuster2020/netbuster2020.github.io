@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;  
-import javax.servlet.http.Cookie;  
+
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;
@@ -16,31 +16,19 @@ public class Logout extends HttpServlet {
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
           
+        
           
         request.getRequestDispatcher("administrador.jsp").include(request, response);  
         
-        Cookie[] cks = request.getCookies();
+        HttpSession session=request.getSession();  
         
-        for (int i = 0; i < cks.length; i++) {
-        	
-        	Cookie ck=new Cookie("name",cks[i].getName());
-        	Cookie Admin=new Cookie("admin",cks[i].getName());
-        	
-            ck.setMaxAge(0);
-            Admin.setMaxAge(0);  
-            
-            response.addCookie(ck);
-            response.addCookie(Admin);
-            
-
-            HttpSession session=request.getSession();  
-            session.invalidate();  
-    		   		
-        }
+        session.invalidate();  
         
-        RequestDispatcher rd=request.getRequestDispatcher("login.jsp");  
+        
+        
+        RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");  
         rd.forward(request, response); 
           
-        out.close();  
+        out.close(); 
     }  
-} 
+}  

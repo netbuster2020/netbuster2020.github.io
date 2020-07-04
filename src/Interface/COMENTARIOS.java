@@ -11,6 +11,6 @@ public interface COMENTARIOS {
     public boolean edit(Comentario us);
     public boolean eliminar(int id);
     public Comentario idcomentario();
-    public Comentario ListaComentarioPelicula(int id);
-    public Comentario ListaComentarioSerie(int id);
+    public List ListaComentarioPelicula(int id);
+    public List ListaComentarioSerie(int id);
 }

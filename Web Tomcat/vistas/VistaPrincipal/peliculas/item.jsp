@@ -1,5 +1,13 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
 <%@page import="Modelo.Pelicula"%>
 <%@page import="Modelo.PeliculaDAO"%>
+<%@page import="Modelo.Comentario"%>
+<%@page import="Modelo.ComentarioDAO"%>
+<%@page import="Modelo.ComentarioSerie"%>
+<%@page import="Modelo.ComentarioSerieDAO"%>
+<%@page import="Modelo.User"%>
+<%@page import="Modelo.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -88,8 +96,64 @@
                     <iframe width="100%" height="315" src="<%= pelicula.getVideo()%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 </div>
-            </div>
 
+
+               <%
+                    ComentarioDAO dao = new ComentarioDAO();
+                    List<Comentario>listacomentarios = dao.ListaComentarioPelicula(id);
+                    Iterator<Comentario>iter=listacomentarios.iterator();
+                    Comentario comentario=null;
+
+
+
+                    while(iter.hasNext()){
+                        comentario=iter.next();
+                %>
+
+
+
+                <%
+                   UserDAO newUser = new UserDAO();
+                   int idu = comentario.getId_user();
+                   User user =(User)newUser.list(idu);
+                %>
+
+
+                 <div class="card mt-4 mb-4">
+			    	         	<div class="card mt-3 m-4 mb-3">
+                    <h1>  
+                    
+                    <%=user.getUsername()%>
+                    
+                     </h1>
+				          	     	<div class="card-header"><%= comentario.getMensaje()%></div>
+					                   	<div class="card-body">
+						                   <blockquote class="blockquote mb-0">
+						                 	
+						                	<footer class="blockquote-footer">Fecha <cite title="Source Title"><%= comentario.getFecha_ahora()%></cite></footer>
+					                	  </blockquote>
+					                  	</div>
+			                		</div>
+
+                    	</div>
+            <%}%>
+
+
+
+      <div class="container">
+      <div class="col-lg-6">
+      <h1>Nuevo Comentario</h1>
+      <form action="Movie" id="formulario">
+      Mensaje: <br>
+      <textarea class="form-control" type="text" name="mensaje"></textarea>
+      <input type="hidden" id="id" name="id" value="<%=String.valueOf(id)%>">
+      <input class="btn btn-primary" type="submit" name="accion" value="Agregar">
+      </form>
+      </div>
+      </div>
+
+
+            </div>
         </div>
     </div>
 

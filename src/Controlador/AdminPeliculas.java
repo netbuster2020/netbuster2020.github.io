@@ -15,8 +15,6 @@ import Modelo.PeliculaDAO;
 
 
 public class AdminPeliculas extends HttpServlet{
-
-    /* vistas cliente */
 	
 	String listar="vistas/dashboard/peliculas/posts/listar.jsp";
 	
@@ -26,11 +24,8 @@ public class AdminPeliculas extends HttpServlet{
 
     Pelicula nuevaPelicula = new Pelicula();
     PeliculaDAO peliculaDAO = new PeliculaDAO();
-
     int id;
 
-    // Gestionar la solicitud del cliente Servlet 
-    // Nos ayuda a manejar su solicitud solo si es llamado
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -39,15 +34,10 @@ public class AdminPeliculas extends HttpServlet{
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Admin Usuarios</title>"); 
-
+            out.println("<title>Usuarios</title>");            
             out.println("</head>");
             out.println("<body>");
-
-            out.println("<div class='container'>");
-            out.println("<h1 class='display-7'>Servlet Controlador at " + request.getContextPath() + "</h1>");
-            out.println("</div>");
-
+            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,7 +47,6 @@ public class AdminPeliculas extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String acceso="";
         String action=request.getParameter("accion");
 
@@ -131,7 +120,6 @@ public class AdminPeliculas extends HttpServlet{
             peliculaDAO.eliminar(id);
             acceso=listar;
         }
-        
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }

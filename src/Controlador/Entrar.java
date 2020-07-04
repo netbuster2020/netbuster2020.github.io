@@ -24,14 +24,14 @@ public class Entrar extends HttpServlet {
         String username=request.getParameter("username");  
         String password=request.getParameter("password");  
         
-        try {
+        try { 
         	
         	Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netbuster","root","coder@2020@basmonje");
             Statement stmt = con.createStatement();
             
             
-            ResultSet rs = stmt.executeQuery("select username,password,id_user admin from usuario where username='"+username+"' and password='"+password+"'");
+            ResultSet rs = stmt.executeQuery("select username, password, id_user, admin from usuario where username='"+username+"' and password='"+password+"'");
             
             if(rs.next()){  
             	

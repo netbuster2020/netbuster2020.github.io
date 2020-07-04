@@ -18,6 +18,8 @@ public class AdminUser extends HttpServlet{
 	
     String add="vistas/dashboard/users/posts/add.jsp";
     
+    String Login = "login.jsp" ;       
+    
     String edit="vistas/dashboard/users/posts/edit.jsp";
 
     User nuevoUser = new User();
@@ -75,6 +77,27 @@ public class AdminUser extends HttpServlet{
 
             usDAO.add(nuevoUser);
             acceso=listar;
+        }else if(action.equalsIgnoreCase("Registrar")){
+
+            String email=request.getParameter("email");
+            String nombre=request.getParameter("nombre");
+            String apellido=request.getParameter("apellido");
+            String password=request.getParameter("password");
+            String nacimiento=request.getParameter("nacimiento");
+            String username=request.getParameter("username");
+            String admin= "0";
+            
+            
+            nuevoUser.setEmail(email);
+            nuevoUser.setNombre(nombre);
+            nuevoUser.setApellido(apellido);
+            nuevoUser.setPassword(password);
+            nuevoUser.setNacimiento(nacimiento);
+            nuevoUser.setUsername(username);
+            nuevoUser.setAdmin(admin);
+
+            usDAO.add(nuevoUser);
+            acceso=Login;
         }
         else if(action.equalsIgnoreCase("editar")){
             request.setAttribute("idper",request.getParameter("id"));

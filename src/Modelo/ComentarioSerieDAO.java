@@ -31,9 +31,9 @@ public class ComentarioSerieDAO implements COMENTARIOSERIES {
 
             while(rs.next()){
                 ComentarioSerie addComentarioSerie = new ComentarioSerie();
-                addComentarioSerie.setId_com_ser(rs.getInt("Id_com_pel"));
+                addComentarioSerie.setId_com_ser(rs.getInt("Id_com_ser"));
                 addComentarioSerie.setId_comentario(rs.getInt("Id_comentario"));
-                addComentarioSerie.setId_serie(rs.getInt("Id_pelicula"));
+                addComentarioSerie.setId_serie(rs.getInt("Id_serie"));
           
 
                 list.add(addComentarioSerie);
@@ -44,8 +44,8 @@ public class ComentarioSerieDAO implements COMENTARIOSERIES {
     }
 
     @Override
-    public ComentarioSerie list(int id_com_pel) {
-        String sql="select * from serie where Id_com_pel="+id_com_pel;
+    public ComentarioSerie list(int id_com_ser) {
+        String sql="select * from serie where Id_com_ser="+id_com_ser;
         try {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -54,7 +54,7 @@ public class ComentarioSerieDAO implements COMENTARIOSERIES {
             while(rs.next()){     
                 cs.setId_com_ser(rs.getInt("Id_com_ser"));
                 cs.setId_comentario(rs.getInt("Id_comentario"));
-                cs.setId_serie(rs.getInt("Id_pelicula"));
+                cs.setId_serie(rs.getInt("Id_serie"));
         
               
                 
@@ -78,7 +78,7 @@ public class ComentarioSerieDAO implements COMENTARIOSERIES {
 
     @Override
     public boolean eliminar(int id) {
-        String sql="delete from comentario_pelicula where Id_comentario"+id;
+        String sql="delete from comentario_serie where Id_comentario"+id;
         try {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);

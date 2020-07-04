@@ -18,6 +18,7 @@ public class ComentarioDAO implements COMENTARIOS {
     ResultSet rs;
 
     Comentario c = new Comentario();
+    List listacomentarios = new ArrayList();
 
 
     @Override
@@ -66,7 +67,7 @@ public class ComentarioDAO implements COMENTARIOS {
 
     @Override
     public boolean add(Comentario us) {
-       String sql="insert into comentario (id_user, fecha_hora, mensaje) values('"+us.getId_user()+"','"+us.getFecha_ahora()+"','"+us.getMensaje()+"');";
+       String sql="insert into comentario (id_user, fecha_ahora, mensaje) values('"+us.getId_user()+"','"+us.getFecha_ahora()+"','"+us.getMensaje()+"');";
         try {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -120,7 +121,7 @@ public class ComentarioDAO implements COMENTARIOS {
          return c;
          	}
     
-    public Comentario ListaComentarioPelicula(int id_pel){
+    public List ListaComentarioPelicula(int id_pel){
     	String sql="select c.id_user, c.fecha_ahora, c.mensaje from usuario u, comentario c where  c.id_user = u.id_user and c.ID_COMENTARIO in (select ID_COMENTARIO from comentario_pelicula where ID_PELICULA ="+id_pel+");";
 		 
         try {
@@ -129,47 +130,48 @@ public class ComentarioDAO implements COMENTARIOS {
             	ps=con.prepareStatement(sql);
             	rs=ps.executeQuery();
 
-            	while(rs.next()){     
-           	 
-                    c.setId_user(rs.getInt("Id_user"));
-                    c.setFecha_ahora(rs.getString("Fecha_ahora"));
-                    c.setMensaje(rs.getString("Mensaje"));
-                
-            	}
-        	} catch (Exception e) {}
-		return c;
+            	while(rs.next()){   
+            		
+            		Comentario cs = new Comentario();
+                    cs.setId_user(rs.getInt("Id_user"));
+                    cs.setFecha_ahora(rs.getString("Fecha_ahora"));
+                    cs.setMensaje(rs.getString("Mensaje"));
+                    listacomentarios.add(cs);
+                }
+            } catch (Exception e) {}
+        return listacomentarios;
     	
     }
     
     
-    public Comentario ListaComentarioSerie(int id_ser){
-    	String sql="select c.id_user, c.fecha_ahora, c.mensaje from usuario u, comentario c where  c.id_user = u.id_user and c.ID_COMENTARIO in (select ID_COMENTARIO from comentario_serie where id_serie ="+id_ser+");";
-		 
-        try {
-       	 
-            	con=cn.getConnection();
-            	ps=con.prepareStatement(sql);
-            	rs=ps.executeQuery();
+    
+    
+    public List ListaComentarioSerie(int id_ser){
+        String sql="select c.id_user, c.fecha_ahora, c.mensaje from usuario u, comentario c where  c.id_user = u.id_user and c.ID_COMENTARIO in (select ID_COMENTARIO from comentario_serie where id_serie ="+id_ser+");";
 
-            	while(rs.next()){     
-           	 
-                    c.setId_user(rs.getInt("Id_user"));
-                    c.setFecha_ahora(rs.getString("Fecha_ahora"));
-                    c.setMensaje(rs.getString("Mensaje"));
-                
-            	}
-        	} catch (Exception e) {}
-		return c;
-    	
+        try {
+
+                con=cn.getConnection();
+                ps=con.prepareStatement(sql);
+                rs=ps.executeQuery();
+
+                while(rs.next()){ 
+
+                	
+                	
+                	Comentario cs = new Comentario();
+                    cs.setId_user(rs.getInt("Id_user"));
+                    cs.setFecha_ahora(rs.getString("Fecha_ahora"));
+                    cs.setMensaje(rs.getString("Mensaje"));
+                    listacomentarios.add(cs);
+                }
+            } catch (Exception e) {}
+        return listacomentarios;
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
+    	
+
+  
     
          
          

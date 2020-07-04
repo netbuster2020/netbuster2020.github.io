@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <form action="login" method="POST">
+
+        <div class="agregarcomentario">
+
+            <p>Escriba Aqui su comentario</p>
+
+            <textarea name="cajamensaje" id="cajamensaje" cols="30" rows="10">
+
+               </textarea>
+
+            <button type="submit" value="Add" class="btn btn-primary">Ingresar</button>
+        </div>
+    </form>
+
+
+
+
+
+
+
+    <div class="container">
+        <div class="col-lg-6">
+            <h1>Nuevo Comentario</h1>
+            <form action="Series" id="formulario">
+                Mensaje: <br>
+                <textarea class="form-control" type="text" name="Mensaje"></textarea>
+
+                <input type="hidden" id="id" name="id" value="<%=id%>">
+
+
+                <input class="btn btn-primary" type="submit" name="accion" value="Agregar">
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

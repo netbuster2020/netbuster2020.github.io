@@ -34,7 +34,7 @@
                             </div> -->
 
                             <button type="submit" value="Login"  class="btn btn-primary">Ingresar</button>
-                            <a class="btn btn-dark" href="Registrar?accion=add">Registrar</a>
+                            <a class="btn btn-dark" href="Register.jsp">Registrar</a>
                         </form>
                     </div>
                 </div>

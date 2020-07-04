@@ -52,16 +52,19 @@
                                 
                                 <div class="carousel-inner" role="listbox">
 
-                                    <div class="carousel-item active">
-                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/silicon-valley-aly-mawji-aly-dutta_51454_1280x720.jpg" alt="First slide">
+                                      <div class="carousel-item active">
+                                        <img class="d-block w-100" loading="lazy" src="https://raw.githubusercontent.com/netbuster2020/netbuster2020.github.io/master/Ba%C3%BAl%20de%20imagenes/logo%20NetBuster.png" alt="First slide">
+                                    </div>
+
+
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/silicon-valley-aly-mawji-aly-dutta_51454_1280x720.jpg" alt="Second slide">
                                     </div>
                                     
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/black-panther-scratches-captain-americas-shield_64808_1280x720.jpg" alt="First slide">
-                                    </div>
+                                    
                                     
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/solo-a-star-wars-story-2018-cover_62184_1280x720.jpg" alt="Second slide">
+                                        <img class="d-block w-100" loading="lazy" src="https://images.wallpapersden.com/image/download/solo-a-star-wars-story-2018-cover_62184_1280x720.jpg" alt="Third slide">
                                     </div>
                                 
                                     <div class="carousel-item">

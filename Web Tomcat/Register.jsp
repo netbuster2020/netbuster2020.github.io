@@ -18,8 +18,7 @@
                     <div class="container">
                         <div class="col-lg-8">
                             <h1>Agregar usuarios</h1>
-                            
-                            <form action="Registrar" method="POST" id="formulario">
+                            <form action="Admin" id="formulario">
                                 <div>
                                     <label for="nombre" class="mr-3">Nombre</label>
                                     <input class="form-control" type="text" name="nombre">
@@ -44,14 +43,9 @@
                                     <label for="nacimiento">Fecha de nacimiento</label>
                                     <input class="form-control" type="date" name="nacimiento"><br>
                                 </div>
-
-                                <div class="d-none">
-                                    <input class="form-control" type="text" value="0" name="admin"><br>
-                                </div>
-
-                                <input class="btn btn-primary" type="submit" name="accion" value="Agregar">
-
-                                <a href="index.jsp">Regresar</a>
+                     
+                                <input class="btn btn-primary" type="submit" name="accion" value="Registrar">
+                                <a href="login.jsp">Regresar</a>
                             </form>
                         </div>
                     </div>
@@ -90,7 +84,7 @@
                                     },
                                     nacimiento: {
                                         required: true
-                                    }
+                                    },                       
                                 },
                                 messages: {
                                     nombre: {
@@ -119,13 +113,13 @@
                                     },
                                     nacimiento: {
                                         required: "Debe ingresar fecha de nacimiento."
-                                    }
+                                    },                              
                                     
                                 }
                             });
                         </script>
     </body>
 
-</html>
+    </html>
 
 

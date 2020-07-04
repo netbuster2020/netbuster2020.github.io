@@ -2,13 +2,14 @@ package Controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 public class Welcome extends HttpServlet {
 
@@ -20,33 +21,55 @@ public class Welcome extends HttpServlet {
         request.getRequestDispatcher("administrador.jsp").include(request, response);  
         
         
+        HttpSession session = request.getSession();
+        
         Cookie[] cks = request.getCookies();
         
         String	usuario = null;
                 
         for (int i = 0; i < cks.length; i++) {
-           
-            out.println("<h1 class='display-7'>Bienvenido "+cks[i].getName()+"</h1>");
-            out.println("<h1 class='display-7'>hOLA "+cks[i].getValue()+"</h1>");
-
+        	
     		if (cks[i].getName().equals("username")) {
-                
+    	
     			usuario = cks[i].getValue();
     		}    		
         }    
-         
-           
+               
+        if(!usuario.equals("")||usuario!=null){  
+        	   
+        	   String username = (String)session.getAttribute("username");
+               out.println("Bienvenido "+username+"Te has registrado exitosamente!");
+               
+               
+               out.print("<b>Welcome to Profile</b>");  
+               out.print("<br>Welcome, "+usuario);  
+               
+               out.println("Hola Mr Cookies "+ cks[0].getValue());
+               
+               out.println("Seguir sesion");
 
-        if(usuario!=null){  
+               Enumeration nombresSesion = session.getAttributeNames();
                
-               out.println("<div class='container'>");
+               while (nombresSesion.hasMoreElements()) {
+            	   
+                   String nombre = nombresSesion.nextElement().toString();
+                   Object valor = session.getAttribute(nombre);
+                   out.println(nombre + " = " + valor + "<br>");
+               }
                
-               out.print("<h1 class='display-6'>Bienvenido, "+usuario+"</div>");  
-               out.println("</div>");
-                  
+               out.println("<h3> Estadisticas de la sesion</h3>");
+               out.println("ID Sesion:"  + session.getId() + "<br>");
+               out.println("Nueva Sesion"  + session.isNew());
+               out.println("Hora de creacion: " + session.getCreationTime());
+               out.println("Intervalo de inactividad de la sesion: " + session.getMaxInactiveInterval());
+               out.println("ID de sesion desde cookie: " + request.isRequestedSessionIdFromCookie());
+               
+           
+             
            } else {
         	   
                out.print("Por favor registrate.");  
+               
                request.getRequestDispatcher("login.jsp").include(request, response); 
                
            }
