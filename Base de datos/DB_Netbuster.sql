@@ -124,6 +124,7 @@ INSERT INTO usuario (nombre, apellido, email, nacimiento, password, username, ad
 
 VALUES 
 
+('anonima', 'anonimo', 'a', '1991-05-17', '69', 'anonimo', 0)
 ('Santiago', 'Gelladuga', 'mrgelladuga@gmail.com', '1991-05-17', 'admin69', 'masterzeta', 1),
 ('Pablo', 'Lay', 'pablolaym@gmail.com', '1985-09-07', 'admin69', 'Play', 1),
 ('Bastian', 'Monje', 'basmonje@gmail.com', '1995-02-05', 'admin69', 'basmonje', 1),
